@@ -175,3 +175,30 @@ def quit(request):
     #request.session.clear()
     #request.session.flush()
     return redirect('/main')
+
+
+
+def get_classes(request):
+    cls_list = Grades.objects.all()
+    return render(request, 'myapp/get_classes.html', {'cls_list': cls_list})
+def add_classes(request):
+    if request.method == "GET":
+        return render(request, 'myapp/add_classes.html')
+    elif request.method == 'POST':
+        title = request.POST.get('titile')
+        Grades.objects.create(gname=title)
+        return redirect('myapp/get_classes.html')
+def del_classes(request):
+    nid = request.GET.get('nid')
+    Grades.objects.filter(id=nid).delete()
+    return redirect('myapp/get_classes.html')
+def edit_classes(request):
+    if request.method == 'GET':
+        nid = request.GET.get('nid')
+        obj = Grades.objects.filter(id=nid).first()
+        return render(request, 'myapp/edit_classes.html', {'obj': obj})
+    elif request.method == 'POST':
+        nid = request.GET.get('nid')
+        title = request.POST.get('title')
+        Grades.objects.filter(id=nid).update(gname=title)
+        return redirect('myapp/get_classes.html')

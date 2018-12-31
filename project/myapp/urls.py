@@ -37,6 +37,11 @@ urlpatterns = [
     re_path(r'^showmain/$',views.showmain),
     re_path(r'^quit/$',views.quit),
 
+    re_path(r'^get_classes.html$', views.get_classes),
+    re_path(r'^myapp/get_classes.html$', views.get_classes),
+    re_path(r'^add_classes.html$', views.add_classes),
+    re_path(r'^del_classes.html$', views.del_classes),
+    re_path(r'^edit_classes.html$', views.edit_classes),
 
 
 ]

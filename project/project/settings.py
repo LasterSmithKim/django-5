@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'myproject',
         'USER': 'usermysite',
         'PASSWORD': 'smithkim123',
-        'HOST': '192.168.43.136',
+        'HOST': '192.168.1.111',
         'PORT': '5432',
     }
 }
@@ -123,3 +123,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SESSION_CACHE_ALIAS = 'session' # 使用的缓存别名(默认内存缓存,也可以是memca...
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://192.168.1.111:6379/0',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "PASSWORD": "smith123",
+        },
+    },
+    'session': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://192.168.1.111:6379/1',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "PASSWORD": "smith123",
+        },
+    },
+}

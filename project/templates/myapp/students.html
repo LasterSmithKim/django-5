@@ -7,10 +7,18 @@
 <body>
     <h1>学生信息列表</h1>
     <ul>
-        {%for student in students%}
-        <li>
-            {{student.sname}}--{{student.scontend}}--{{student.sgrade}}
-        </li>
+        {% for student in students %}
+            {% if forloop.counter|divisibleby:2 %}
+                <li style="color:red">
+                    {{forloop.counter}}--{{student.sname}}--{{student.scontend}}--{{student.sgrade}}
+                </li>
+            {% else %}
+                <li style="color:blue">
+                    {{forloop.counter}}--{{student.sname}}--{{student.scontend}}--{{student.sgrade}}
+                </li>
+            {% endif %}
+        {%empty%}
+            <li>目前没有学生</li>
         {%endfor%}
     </ul>
 </body>

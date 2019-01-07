@@ -43,5 +43,8 @@ urlpatterns = [
     re_path(r'^del_classes.html$', views.del_classes),
     re_path(r'^edit_classes.html$', views.edit_classes),
 
+    #re_path(r'^good/$', views.good,name='good'),
+    re_path(r'^good/(\d+)/$', views.good,name='good'),
+    re_path(r'^mainbase/$', views.mainbase),
 
 ]

@@ -2,12 +2,14 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
+from .models import Students
 
 # Create your views here.
 from django.http import HttpResponse
 def index(request):
     #return HttpResponse("hello world")
-    return render(request,'myapp/index.html')
+    student = Students.stuObj1.get(pk = 1)
+    return render(request,'myapp/index.html',{'stu':student,'num':10,'str':'strs','list':['good','nice','handsome'],'test':10})
 def detail(request,num):
     return HttpResponse("detail - %s"%num)
 
@@ -202,3 +204,10 @@ def edit_classes(request):
         title = request.POST.get('title')
         Grades.objects.filter(id=nid).update(gname=title)
         return redirect('myapp/get_classes.html')
+
+
+def good(request,num):
+    return render(request,'myapp/good.html',{'num':num})
+
+def mainbase(request):
+    return render(request,'myapp/mainbase.html')

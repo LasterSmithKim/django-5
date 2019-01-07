@@ -6,5 +6,35 @@
 </head>
 <body>
     hello world !
+
+    <a href="good/">链接</a>
+    <a href="{% url 'good' 1 %}">链接</a>
+
+    <h1>{{stu.sname}}</h1>
+    <h1>{{stu.getname}}</h1>
+
+    <h1>num = *{{num}}*</h1>
+    {% if num %}
+        <h1>是否执行if语句</h1>
+    {% endif %}
+
+    {% ifequal 'sunck' 'sunck'%}
+        <li>参数是否相等</li>
+    {% endifequal %}
+
+    {{ str | upper}}
+    {{ str }}
+
+    <h1>{{ list | join:'#'}}</h1>
+
+    <h1>{{test | default:'没有'}}</h1>
+
+    <h1>num = {{num}}</h1>
+    <h1>num = {{num|add:10}}</h1>
+    <h1>num = {{num|add:-10}}</h1>
+    <h1>num = {% widthratio num 1 5%}</h1>
+    <h1>num = {% widthratio num 5 1%}</h1>
+
+
 </body>
 </html>

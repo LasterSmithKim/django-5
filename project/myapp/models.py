@@ -39,6 +39,8 @@ class Students(models.Model):
     sgrade = models.ForeignKey("Grades",on_delete=models.CASCADE)
     def __str__(self):
         return self.sname
+    def getname(self):
+        return self.sname
     class Meta:
         ordering = ['-id']
 
